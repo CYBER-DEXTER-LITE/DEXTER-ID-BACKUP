@@ -992,12 +992,12 @@ https://chat.whatsapp.com/KGtgYAU9Qv14v5iU0qBUbV
         /** ************* */
         return zk;
     }
-    let fichier = require.resolve(__filename);
-    fs.watchFile(fichier, () => {
-        fs.unwatchFile(fichier);
-        console.log(`mise à jour ${__filename}`);
-        delete require.cache[fichier];
-        require(fichier);
-    });
-    main();
-}, 5000);
+init();
+
+app.get('/', (req, res) => {
+    res.send('Hello World!');
+});
+
+app.listen(PORT, () => {
+    console.log(`Server is running on port ${PORT}`);
+});
